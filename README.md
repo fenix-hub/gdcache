@@ -13,6 +13,8 @@ GDCache also allows to create an in-memory cache, sort of a GDScript alternative
 Even though *currently* a GDScript standalone instance is far from being optimized just like a python/node in-memory cache (since it is impossible to remove heavy modules/servers like the `physics` one), it offers the basics for furhter improvements and optimizations.
 
 ## Usage
+
+### Cache
 All Cache types inherit from the `AbstractCache` class.  
 This means that all Cache have some common functionalities, which can be overridden by all the other `<any>Cache` implementations.  
 You could even implement your own custom cache replacement policy!  
@@ -37,7 +39,7 @@ func _ready() -> void:
     
     Cache.Set("res4", "val4") # capacity is 3, so the FIFO policy will be used
     
-    r1 = Cache.get("res1") # null
+    r1 = Cache.Get("res1") # null
     r4 = Cache.Get("res4") # res4
 
     print(Cache)
@@ -49,9 +51,45 @@ Even if `AbstractCache` inherits from `Node`, it is **not mandatory** to add a `
 - (2) You want to make one or multiple caches as `Singleton`s in order to access them globally from your scripts
 
 
+### Cache Monitors
+A `CacheMonitor` will let you "monitor" your cache properties and usage at runtime, without interferring with the cache itself.
+```gdscript
+var rrcache: RRCache = RRCache.new(3)
+var monitor: CacheMonitor = CacheMonitor.new(rrcache)
+
+func _ready() -> void:
+    rrcache.Set("res1", "val1")
+	rrcache.Get("res1")
+	
+    rrcache.Set("res2", "val2")
+	rrcache.Get("res2")
+	
+    rrcache.Set("res3", "val3")
+	rrcache.Get("res3")
+	
+    rrcache.Set("res4", "val4") # will evict a random key
+	rrcache.Get("res4")
+	rrcache.Get("res1")
+
+    print(monitor)
+```
+`print(monitor)` will print something like
+```
+Cache: cache_1449834701
+Policy: Random Replacement
+Total Keys: 3/3
+Set Keys: 4
+Requested Keys: 5 (166.67% ratio)
+Hit Keys: 5 (100.00% ratio)
+Missed Keys: 0 (0.00% ratio)
+Evicted Keys: 1 (20.00% ratio)
+```
+
 ## Supported Policies
 
 Currently supported policies:
+- Random
+- - [x] Random Replacement (RRCache)
 - Queue Based
 - - [x] First in / First Out (FIFOCache)
 - - [x] Last in / First Out (LIFOCache)

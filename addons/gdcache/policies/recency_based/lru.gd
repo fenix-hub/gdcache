@@ -23,7 +23,10 @@ class_name LRUCache
 
 var ranks: Array = []
 
-func _Get(key):
+func _setup() -> void:
+    policy = "Least Recently Used"
+
+func _Get(key, options = {}):
     if cache.has(key):
     # Increment the rank of the requested resource
     # by pushing the resource at the end of the queue

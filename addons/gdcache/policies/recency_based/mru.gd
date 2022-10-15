@@ -3,7 +3,10 @@ class_name MRUCache
 
 var ranks: Array = []
 
-func _Get(key):
+func _setup() -> void:
+    policy = "Most Recently Used"
+
+func _Get(key, options = {}):
     if cache.has(key):
         ranks.push_back(ranks.pop_at(ranks.bsearch(key)))
     return cache.get(key, null)
