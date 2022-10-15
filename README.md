@@ -1,5 +1,5 @@
 # GDCache 
-`GDCache` is (POC ™) a GDScript Caching Algorithms and Replacement Policies addon for Godot Engine.
+`GDCache` is a (POC™) GDScript Caching Algorithms and Replacement Policies addon for Godot Engine.
 
 `GDCache` exposes some ready-to-use Cache classes which can be used as singletons in any Godot Project to handle caching of any type of resource (local variable values, godot engine resources, http responses, database entities).
 
@@ -12,9 +12,9 @@ For example:
 GDCache also allows to create an in-memory cache, sort of a GDScript alternative to technologies like [Redis](https://redis.io/) or [Dragonflydb](https://dragonflydb.io/).
 Even though *currently* a GDScript standalone instance is far from being optimized just like a python/node in-memory cache (since it is impossible to remove heavy modules/servers like the `physics` one), it offers the basics for furhter improvements and optimizations.
 
-## Usage
+## Usage ✒️
 
-### Cache
+### Cache 🛢️
 All Cache types inherit from the `AbstractCache` class.  
 This means that all Cache have some common functionalities, which can be overridden by all the other `<any>Cache` implementations.  
 You could even implement your own custom cache replacement policy!  
@@ -51,7 +51,7 @@ Even if `AbstractCache` inherits from `Node`, it is **not mandatory** to add a `
 - (2) You want to make one or multiple caches as `Singleton`s in order to access them globally from your scripts
 
 
-### Cache Monitors
+### Cache Monitors 🔎
 A `CacheMonitor` will let you "monitor" your cache properties and usage at runtime, without interferring with the cache itself.
 ```gdscript
 var rrcache: RRCache = RRCache.new(3)
@@ -85,7 +85,7 @@ Missed Keys: 0 (0.00% ratio)
 Evicted Keys: 1 (20.00% ratio)
 ```
 
-## Supported Policies
+## Supported Policies 📜
 
 Currently supported policies:
 - Random
