@@ -59,17 +59,17 @@ var monitor: CacheMonitor = CacheMonitor.new(rrcache)
 
 func _ready() -> void:
     rrcache.Set("res1", "val1")
-	rrcache.Get("res1")
-	
+    rrcache.Get("res1")
+    
     rrcache.Set("res2", "val2")
-	rrcache.Get("res2")
-	
+    rrcache.Get("res2")
+    
     rrcache.Set("res3", "val3")
-	rrcache.Get("res3")
-	
+    rrcache.Get("res3")
+    
     rrcache.Set("res4", "val4") # will evict a random key
-	rrcache.Get("res4")
-	rrcache.Get("res1")
+    rrcache.Get("res4")
+    rrcache.Get("res1")
 
     print(monitor)
 ```
