@@ -6,5 +6,5 @@ func _setup() -> void:
 
 func _Set(key, val, options: Dictionary = {}) -> void:
 	if cache.size() == CAPACITY:
-		evict(cache.keys()[0])
+		Evict(cache.keys()[0])
 	cache[key] = val

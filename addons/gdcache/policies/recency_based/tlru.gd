@@ -25,7 +25,7 @@ func _Set(key, value, options: Dictionary = { ttu = max_TTU + cache.size() }):
 	schedule.start(schedule.wait_time)
 
 func ttu_expired(schedule: Timer, key):
-	evict(key)
+	Evict(key)
 	schedule.queue_free()
 
 # Sort ascending TTU

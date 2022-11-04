@@ -49,11 +49,11 @@ func Set(key, val, options: Dictionary = {}):
 func _Set(key, val, options: Dictionary = {}):
 	cache[key] = val
 
-func evict(key):
-	_evict(key)
+func Evict(key):
+	_Evict(key)
 	evict_key.emit(key)
 
-func _evict(key):
+func _Evict(key):
 	cache.erase(key)
 
 func _to_string() -> String:
