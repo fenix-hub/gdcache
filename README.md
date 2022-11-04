@@ -106,6 +106,7 @@ Currently supported policies:
   - - [ ] Segmented LRU (`SLRUCache`)
   - *LRU Approximations*
     - - [ ] Pseudo-LRU (`PLRUCache`)
+    - - [x] CLOCK (`CLOCKCache`)
     - - [ ] CLOCK-Pro (`CLOCKProCache`)
 - *Simple frequency-based policies*
   - - [ ] Least-frequently used (`LFUCache`)

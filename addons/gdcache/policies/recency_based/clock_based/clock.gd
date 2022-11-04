@@ -1,5 +1,5 @@
 extends AbstractCache
-class_name ClockCache
+class_name CLOCKCache
 
 var hand: int = 0
 
