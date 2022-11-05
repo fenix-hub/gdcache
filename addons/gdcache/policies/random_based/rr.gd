@@ -6,5 +6,5 @@ func _setup() -> void:
 
 func _Set(key, val, options = {}) -> void:
 	if cache.size() == CAPACITY:
-		evict(cache.keys()[randi() % cache.size()])
+		Evict(cache.keys()[randi() % cache.size()])
 	cache[key] = val

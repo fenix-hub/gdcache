@@ -18,7 +18,7 @@ var requested_keys: int = 0
 # Found Items (non-null)
 var set_keys: int = 0
 var hit_keys: int = 0
-var evicted_keys: int = 0
+var Evicted_keys: int = 0
 
 var cache: AbstractCache
 
@@ -44,7 +44,7 @@ func _on_get_key(key, hit: bool) -> void:
 	hit_keys += int(hit)
 	
 func _on_evict_key(key) -> void:
-	evicted_keys += 1
+	Evicted_keys += 1
 
 func get_requested_keys_ratio() -> float:
 	return float(requested_keys) / cache.cache.size()
@@ -55,8 +55,8 @@ func get_hit_ratio() -> float:
 func get_miss_ratio() -> float:
 	return 1.0 - (float(hit_keys) / requested_keys)
 
-func get_eviction_ratio() -> float:
-	return float(evicted_keys) / requested_keys
+func get_Eviction_ratio() -> float:
+	return float(Evicted_keys) / requested_keys
 
 func _to_string() -> String:
 	return print_string.format({
@@ -71,6 +71,6 @@ func _to_string() -> String:
 		hkr = "%.2f" % [get_hit_ratio() * 100],
 		mk = requested_keys - hit_keys, 
 		mkr = "%.2f" % [get_miss_ratio() * 100],
-		ek = evicted_keys, 
-		ekr = "%.2f" % [get_eviction_ratio() * 100]
+		ek = Evicted_keys, 
+		ekr = "%.2f" % [get_Eviction_ratio() * 100]
 	})

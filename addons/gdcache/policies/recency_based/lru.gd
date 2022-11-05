@@ -37,10 +37,10 @@ func _Get(key, options = {}):
 func _Set(key, val, options: Dictionary = {}) -> void:
     # Evic the least recently used item
     if cache.size() == CAPACITY:
-        evict(key)
+        Evict(key)
     cache[key] = val
     ranks.push_back(key)
 
-func _evict(key) -> void:
+func _Evict(key) -> void:
     var evict_key = ranks.pop_front()
     cache.erase(evict_key)

@@ -3,7 +3,7 @@
 
 `GDCache` exposes some ready-to-use Cache classes which can be used as singletons in any Godot Project to handle caching of any type of resource (local variable values, godot engine resources, http responses, database entities).
 
-## 🧠 Rationale 
+## 💡 Rationale 
 I started developing this library mainly because of educational reasons.  
 I wanted to study Caching technologies and replacement policies algorithms, and try to implement them in a very user-friendly language like GDScript.  
 The result is a set of scripts which can be both used in production environments with Godot Engine or just for learning purpose.  
@@ -72,7 +72,7 @@ func _ready() -> void:
     rrcache.Set("res3", "val3")
     rrcache.Get("res3")
 
-    rrcache.Set("res4", "val4") # will evict a random key
+    rrcache.Set("res4", "val4") # will Evict a random key
     rrcache.Get("res4")
     rrcache.Get("res1")
 
@@ -106,6 +106,7 @@ Currently supported policies:
   - - [ ] Segmented LRU (`SLRUCache`)
   - *LRU Approximations*
     - - [ ] Pseudo-LRU (`PLRUCache`)
+    - - [x] CLOCK (`CLOCKCache`)
     - - [ ] CLOCK-Pro (`CLOCKProCache`)
 - *Simple frequency-based policies*
   - - [ ] Least-frequently used (`LFUCache`)
