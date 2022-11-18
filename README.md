@@ -1,4 +1,3 @@
-# GDCache 
 `GDCache` is a (POC™) GDScript Caching Algorithms and Replacement Policies addon for Godot Engine.
 
 `GDCache` exposes some ready-to-use Cache classes which can be used as singletons in any Godot Project to handle caching of any type of resource (local variable values, godot engine resources, http responses, database entities).
