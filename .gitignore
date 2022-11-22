@@ -1,8 +1,19 @@
-# Godot 4+ specific ignores
-.godot/
+# build output
+dist/
 
-# Project specific ignores
-src/
-icon.svg
-project.godot
-*.import
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
+.DS_Store
