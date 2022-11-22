@@ -102,32 +102,32 @@ Evicted Keys: 1 (20.00% ratio)
 
 Currently supported policies:
 
-- *Random Based*
+- *Random Based*  
   - ✅ Random Replacement (`RRCache`)
-- *Queue Based*
+- *Queue Based*  
   - ✅ First in / First Out (`FIFOCache`)
   - ✅ Last in / First Out (`LIFOCache`)
-- *Recency Based*
+- *Recency Based*  
   - ✅ Least Recently Used (`LRUCache`)
   - ✅ Most Recently Used (`MRUCache`)
   - ✅ Time aware Least Recently Used (`TLRUCache`)
-  - ❌ Segmented LRU (`SLRUCache`)
-  - *LRU Approximations*
-    - ❌ Pseudo-LRU (`PLRUCache`)
+  - ⭕ Segmented LRU (`SLRUCache`)
+  - *LRU Approximations*  
+    - ⭕ Pseudo-LRU (`PLRUCache`)
     - ✅ CLOCK (`CLOCKCache`)
-    - ❌ CLOCK-Pro (`CLOCKProCache`)
-- *Simple frequency-based policies*
-  - ❌ Least-frequently used (`LFUCache`)
-  - ❌ Least frequent recently used (`LFRUCache`)
-  - ❌ LFU with dynamic aging (`LFUDACache`)
-- *RRIP-style policies*
-  - ❌ Re-Reference Interval Prediction (`RRIPCache`)
-  - ❌ Static RRIP (`SRRIPCache`)
-  - ❌ Bimodal RRIP (`BRRIPCache`)
-  - ❌ Dynamic RRIP (`DRRIPCache`)
-- *Other cache replacement policies*
-  - ❌ Low inter-reference recency set (`LIRSCache`)
-  - ❌ Adaptive replacement cache (`ARCCache`)
-  - ❌ AdaptiveClimb (`ACCache`)
-  - ❌ Clock with adaptive replacement (`CARCache`)
-  - ❌ Multi queue (`MQCache`)
+    - ⭕ CLOCK-Pro (`CLOCKProCache`)
+- *Simple frequency-based policies*  
+  - ⭕ Least-frequently used (`LFUCache`)
+  - ⭕ Least frequent recently used (`LFRUCache`)
+  - ⭕ LFU with dynamic aging (`LFUDACache`)
+- *RRIP-style policies*  
+  - ⭕ Re-Reference Interval Prediction (`RRIPCache`)
+  - ⭕ Static RRIP (`SRRIPCache`)
+  - ⭕ Bimodal RRIP (`BRRIPCache`)
+  - ⭕ Dynamic RRIP (`DRRIPCache`)
+- *Other cache replacement policies*  
+  - ⭕ Low inter-reference recency set (`LIRSCache`)
+  - ⭕ Adaptive replacement cache (`ARCCache`)
+  - ⭕ AdaptiveClimb (`ACCache`)
+  - ⭕ Clock with adaptive replacement (`CARCache`)
+  - ⭕ Multi queue (`MQCache`)
