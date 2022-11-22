@@ -7,11 +7,17 @@ const { path } = Astro.props as Props;
 ---
 
 <footer>
-	<AvatarList path={path} />
+	<!-- 
+		<AvatarList path={path} />
+	-->
+	<p>
+		Made using Astro [🚀](https://astro.build/), Hosted on GitHub Pages.
+	</p>
 </footer>
 
 <style>
 	footer {
+		text-align: center;
 		margin-top: auto;
 		padding: 2rem;
 		border-top: 3px solid var(--theme-divider);
