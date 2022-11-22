@@ -30,6 +30,7 @@ This means that all Cache have some common functionalities, which can be overrid
 You could even implement your own custom cache replacement policy!  
   
 Here's an example using a First In / First Out cache with a capacity of 3
+
 ```gdscript
 var Cache: FIFOCache = FIFOCache.new(3)
 
@@ -85,6 +86,7 @@ func _ready() -> void:
     print(monitor)
 ```
 `print(monitor)` will print something like
+
 ```
 Cache: cache_1449834701
 Policy: Random Replacement
