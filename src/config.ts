@@ -49,5 +49,6 @@ export const SIDEBAR: Sidebar = {
 	en: {
 		'Section Header': [
 			{ text: 'Introduction', link: 'en/introduction' },
+		]
 	},
 };
