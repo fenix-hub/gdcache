@@ -47,7 +47,7 @@ export type Sidebar = Record<
 >;
 export const SIDEBAR: Sidebar = {
 	en: {
-		'Section Header': [
+		'gdcache': [
 			{ text: 'Introduction', link: 'en/introduction' },
 		]
 	},
