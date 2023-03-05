@@ -26,32 +26,32 @@ You could even implement your own custom cache replacement policy!
   
 Here's an example using a First In / First Out cache with a capacity of 3
 ```gdscript
-var Cache: FIFOCache = FIFOCache.new(3)
+var cache: FIFOCache = FIFOCache.new(3)
 
 func _ready() -> void:
-    get_tree().get_root().add_child.call_deferred(Cache) # not required
+    get_tree().get_root().add_child.call_deferred(cache) # not required
     
-    Cache.set_key.connect(_on_set) # will be called on `Get()`
-    Cache.get_key.connect(_on_get) # will be called on `Set()`
+    cache.set_key.connect(_on_set) # will be called on `Get()`
+    cache.get_key.connect(_on_get) # will be called on `Set()`
     
-    Cache.Set("res1", "val1")
-    Cache.Set("res2", "val2")
-    Cache.Set("res3", "val3")
+    cache.Set("res1", "val1")
+    cache.Set("res2", "val2")
+    cache.Set("res3", "val3")
     
-    var r1 = Cache.Get("res1") # res1
-    var r2 = Cache.Get("res3") # res2
-    var r4 = Cache.Get("res4") # null
+    var r1 = cache.Get("res1") # res1
+    var r2 = cache.Get("res3") # res2
+    var r4 = cache.Get("res4") # null
     
-    Cache.Set("res4", "val4") # capacity is 3, so the FIFO policy will be used
+    cache.Set("res4", "val4") # capacity is 3, so the FIFO policy will be used
     
-    r1 = Cache.Get("res1") # null
-    r4 = Cache.Get("res4") # res4
+    r1 = cache.Get("res1") # null
+    r4 = cache.Get("res4") # res4
 
-    print(Cache)
+    print(cache)
     # will print `{ "res2": "val2", "res3": "val3", "res4": "val4" }`
 ```
 
-Even if `AbstractCache` inherits from `Node`, it is **not mandatory** to add a `Cache` node to the NodeTree, unless:
+Even though `AbstractCache` inherits from `Node`, it is **not mandatory** to add a `Cache` node to the NodeTree, unless:
 (1) The `Cache` node uses time-based algorithms (such as `TLRUCache`) which require to instance some `Timer`s as sub-children
 (2) You want to make one or multiple caches as `Singleton`s in order to access them globally from your scripts
 
@@ -84,7 +84,7 @@ Cache: cache_1449834701
 Policy: Random Replacement
 Total Keys: 3/3
 Set Keys: 4
-Requested Keys: 5 (166.67% ratio)
+Get Keys: 5 (166.67% ratio)
 Hit Keys: 5 (100.00% ratio)
 Missed Keys: 0 (0.00% ratio)
 Evicted Keys: 1 (20.00% ratio)
@@ -103,7 +103,7 @@ Currently supported policies:
   - - [x] Least Recently Used (`LRUCache`)
   - - [x] Most Recently Used (`MRUCache`)
   - - [x] Time aware Least Recently Used (`TLRUCache`)
-  - - [ ] Segmented LRU (`SLRUCache`)
+  - - [x] Segmented LRU (`SLRUCache`)
   - *LRU Approximations*
     - - [ ] Pseudo-LRU (`PLRUCache`)
     - - [x] CLOCK (`CLOCKCache`)
