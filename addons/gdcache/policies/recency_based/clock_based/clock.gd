@@ -3,28 +3,25 @@ class_name CLOCKCache
 
 var hand: int = 0
 
-func _setup() -> void:
-	policy = "Clock"
+func __setup() -> void:
+    policy = "Clock"
 
-func _Get(key, options: Dictionary = {}):
-	if cache.has(key):
-		cache[key].r_bit = true
-        hand = cache.keys().find(key)
-        return cache[key].get(val, null)
+func __get(key: Variant, default: Variant = null, options: Dictionary = {}) -> Variant:
+    if has(key):
+        hand = keys().find(key)
+        var kv: Dictionary = super.__get(key, { val = null, r_bit = true })
+        kv.r_bit = true
+        return kv.val
     else:
         return null
 
-	
-func _Set(key, val, options: Dictionary = {}) -> void:
-	if cache.size() == CAPACITY:
-        while (cache[hand].r_bit):
-            cache[hand].r_bit = false
-            if hand >= cache.size():
+func __set(key: Variant, val: Variant, options: Dictionary = {}) -> void:
+    if size() >= CAPACITY:
+        while (_cache[hand].r_bit):
+            _cache[hand].r_bit = false
+            if hand >= size():
                 hand = 0
             else:
-                hand +=1
-        Evict(key)
-	cache[key] = {val = val, r_bit = true}
-
-func _Evict(key) -> void:
-	cache.erase(key)
+                hand += 1
+                super.Evict(key)
+    _cache[key] = { val = val, r_bit = true }

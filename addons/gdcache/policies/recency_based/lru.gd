@@ -23,24 +23,26 @@ class_name LRUCache
 
 var ranks: Array = []
 
-func _setup() -> void:
+func __setup() -> void:
     policy = "Least Recently Used"
 
-func _Get(key, options = {}):
-    if cache.has(key):
+func __get(key: Variant, default: Variant = null, options: Dictionary = {}) -> Variant:
+    if has(key):
     # Increment the rank of the requested resource
     # by pushing the resource at the end of the queue
     # NOTE! Over large arrays this is not efficient
-        ranks.push_back(ranks.pop_at(ranks.bsearch(key))) 
-    return cache.get(key, null)
+        ranks.push_front(ranks.pop_at(ranks.bsearch(key))) 
+        return _cache[key]
+    else:
+        return null
 
-func _Set(key, val, options: Dictionary = {}) -> void:
+func __set(key: Variant, val: Variant, options: Dictionary = {}) -> void:
     # Evic the least recently used item
-    if cache.size() == CAPACITY:
-        Evict(key)
-    cache[key] = val
-    ranks.push_back(key)
+    if size() >= CAPACITY:
+        super.Evict(key)
+    _cache[key] = val
+    ranks.push_front(key)
 
-func _Evict(key) -> void:
-    var evict_key = ranks.pop_front()
-    cache.erase(evict_key)
+func __evict(key: Variant, options: Dictionary = {}) -> bool:
+    var evict_key: Variant = ranks.pop_back()
+    return super.__evict(key)

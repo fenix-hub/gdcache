@@ -1,10 +1,10 @@
 extends AbstractCache
 class_name FIFOCache
 
-func _setup() -> void:
-	policy = "First In First Out"
+func __setup() -> void:
+    policy = "First In First Out"
 
-func _Set(key, val, options: Dictionary = {}) -> void:
-	if cache.size() == CAPACITY:
-		Evict(cache.keys()[0])
-	cache[key] = val
+func __set(key: Variant, val: Variant, options: Dictionary = {}) -> void:
+    if size() >= CAPACITY:
+        Evict(keys()[0])
+    _cache[key] = val
